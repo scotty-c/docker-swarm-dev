@@ -38,4 +38,3 @@ Docker ps
 docker -H tcp://172.17.8.104:2376 ps
 ````
 
-On any of the other host run ````weave status```` to see the container network
