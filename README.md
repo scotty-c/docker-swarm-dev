@@ -1,4 +1,4 @@
-# Docker Swatm Dev Environment
+# Docker Swarm Dev Environment
 ```
 Prerequisites:
 - Vagrant
