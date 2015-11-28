@@ -27,7 +27,7 @@
   shell_commands: 
       - { shell: yum install -y git wget curl device-mapper-libs && systemctl stop firewalld && systemctl disable firewalld  }
       - { shell: /opt/puppet/bin/gem install r10k }
-      - { shell: 'echo -e "172.17.8.101 swarm-101\n172.17.8.102 swarm-02">/etc/hosts && echo "PATH=\$PATH:/usr/local/bin" >> ~/.bashrc' } 
+      - { shell: 'echo -e "172.17.8.101 swarm-101\n172.17.8.102 swarm-102">/etc/hosts && echo "PATH=\$PATH:/usr/local/bin" >> ~/.bashrc' } 
       - { shell: cp /home/vagrant/swarm-102/Puppetfile /tmp && cd /tmp && /opt/puppet/bin/r10k puppetfile install -v }
       - { shell: cp /home/vagrant/swarm-102/modules/* -R /tmp/modules }
      
