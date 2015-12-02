@@ -4,6 +4,12 @@ class config::swarm {
   require => Class['config::consul_config']
   } 
 
+  docker_network { 'swarm-private':
+  ensure => present,
+  create => true, 
+  driver => 'overlay',
+  }
+
   if $hostname =~ /^*master*$/ {
   
   swarm_cluster {'cluster 1':
