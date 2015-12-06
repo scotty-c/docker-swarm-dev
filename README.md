@@ -38,7 +38,7 @@ Rabitmq
 
 # Commands
 
-Here are a few interesting commands to look at what is happening inside the swarm cluster. ````vagrant ssh into consul-node-104````
+Here are a few interesting commands to look at what is happening inside the swarm cluster. ````vagrant ssh into swarm-master````
 
 Info
 ````
