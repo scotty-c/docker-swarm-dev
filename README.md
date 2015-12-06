@@ -20,7 +20,7 @@ This is all automated and controlled with Puppet.
 consul
 ````
 127.0.0.1:9500
-
+````
 
 # Commands
 
