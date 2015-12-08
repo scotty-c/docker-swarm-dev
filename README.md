@@ -28,11 +28,17 @@ Here are a few interesting commands to look at what is happening inside the swar
 
 Info
 ````
-docker -H tcp://172.17.8.104:2376 info
+docker -H tcp://172.17.8.114:2376 info
 `````  
 
 Docker ps
 ```` 
-docker -H tcp://172.17.8.104:2376 ps
+docker -H tcp://172.17.8.114:2376 ps
+````
+
+
+Get Registrator
+````
+docker -H tcp://172.17.8.114:2376 run -d  --restart always -e constraint:node!=swarm* -v /var/run/docker.sock:/tmp/docker.sock   gliderlabs/registrator consul://172.17.8.101:8500
 ````
 
