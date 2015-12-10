@@ -15,5 +15,6 @@ mod 'scottyc/golang'
 mod 'garethr/docker', :git => "https://github.com/scotty-c/garethr-docker.git"
 mod 'stankevich/python'
 mod 'stahnma/epel'
+mod 'saz-dnsmasq'
 
 

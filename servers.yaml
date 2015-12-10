@@ -6,10 +6,11 @@
   name: swarm-101
   forward_ports:
       - { guest: 8500, host: 9500 }
-      - { guest: 8080, host: 9080 }
+      - { guest: 10000, host: 10000 }
   ram: 2048
   shell_commands: 
       - { shell: yum install -y git wget curl device-mapper-libs && systemctl stop firewalld && systemctl disable firewalld }
+      - { shell: 'echo -e "PEERDNS=no\nDNS1=127.0.0.1\nDNS2=8.8.8.8">>/etc/sysconfig/network-scripts/ifcfg-enp0s3 && systemctl restart network'}
       - { shell: /opt/puppet/bin/gem install r10k }
       - { shell: 'echo -e "172.17.8.101 swarm-101">/etc/hosts && echo "PATH=\$PATH:/usr/local/bin" >> ~/.bashrc' } 
       - { shell: cp /home/vagrant/swarm-101/Puppetfile /tmp && cd /tmp && /opt/puppet/bin/r10k puppetfile install -v }
@@ -26,6 +27,7 @@
   ram: 2048
   shell_commands: 
       - { shell: yum install -y git wget curl device-mapper-libs && systemctl stop firewalld && systemctl disable firewalld  }
+      - { shell: 'echo -e "PEERDNS=no\nDNS1=127.0.0.1\nDNS2=8.8.8.8">>/etc/sysconfig/network-scripts/ifcfg-enp0s3 && systemctl restart network'}
       - { shell: /opt/puppet/bin/gem install r10k }
       - { shell: 'echo -e "172.17.8.101 swarm-101\n172.17.8.102 swarm-102">/etc/hosts && echo "PATH=\$PATH:/usr/local/bin" >> ~/.bashrc' } 
       - { shell: cp /home/vagrant/swarm-102/Puppetfile /tmp && cd /tmp && /opt/puppet/bin/r10k puppetfile install -v }
@@ -42,6 +44,7 @@
   ram: 2048
   shell_commands: 
       - { shell: yum install -y git wget curl device-mapper-libs && systemctl stop firewalld && systemctl disable firewalld  }
+      - { shell: 'echo -e "PEERDNS=no\nDNS1=127.0.0.1\nDNS2=8.8.8.8">>/etc/sysconfig/network-scripts/ifcfg-enp0s3 && systemctl restart network'}
       - { shell: /opt/puppet/bin/gem install r10k }
       - { shell: 'echo -e "172.17.8.101 swarm-101\n172.17.8.103 swarm-103">/etc/hosts && echo "PATH=\$PATH:/usr/local/bin" >> ~/.bashrc' } 
       - { shell: cp /home/vagrant/swarm-103/Puppetfile /tmp && cd /tmp && /opt/puppet/bin/r10k puppetfile install -v }
@@ -58,6 +61,7 @@
   ram: 2048
   shell_commands: 
       - { shell: yum install -y git wget curl device-mapper-libs && systemctl stop firewalld && systemctl disable firewalld  }
+      - { shell: 'echo -e "PEERDNS=no\nDNS1=127.0.0.1\nDNS2=8.8.8.8">>/etc/sysconfig/network-scripts/ifcfg-enp0s3 && systemctl restart network'}
       - { shell: /opt/puppet/bin/gem install r10k }
       - { shell: 'echo -e "172.17.8.101 swarm-101\n172.17.8.114 swarm-master-01">/etc/hosts && echo "PATH=\$PATH:/usr/local/bin" >> ~/.bashrc' } 
       - { shell: cp /home/vagrant/swarm-master-01/Puppetfile /tmp && cd /tmp && /opt/puppet/bin/r10k puppetfile install -v }
@@ -73,6 +77,7 @@
   ram: 2048
   shell_commands: 
       - { shell: yum install -y git wget curl device-mapper-libs && systemctl stop firewalld && systemctl disable firewalld  }
+      - { shell: 'echo -e "PEERDNS=no\nDNS1=127.0.0.1\nDNS2=8.8.8.8">>/etc/sysconfig/network-scripts/ifcfg-enp0s3 && systemctl restart network'}
       - { shell: /opt/puppet/bin/gem install r10k }
       - { shell: 'echo -e "172.17.8.101 swarm-101\n172.17.8.115 swarm-master-02">/etc/hosts && echo "PATH=\$PATH:/usr/local/bin" >> ~/.bashrc' } 
       - { shell: cp /home/vagrant/swarm-master-02/Puppetfile /tmp && cd /tmp && /opt/puppet/bin/r10k puppetfile install -v }

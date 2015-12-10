@@ -10,6 +10,7 @@ class config(
    
   class {'config::swarm':}
   class {'config::compose':}
+  class {'config::dns':}
 }
 
 

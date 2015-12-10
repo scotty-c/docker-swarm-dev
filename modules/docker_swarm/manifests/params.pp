@@ -12,5 +12,5 @@ class docker_swarm::params {
   $backend_port     = ''
   $advertise_int    = ''
   $swarm_dir        = '/usr/local/go/src/github.com/docker/swarm'
-  $swarm_version    = undef
+  $swarm_version    = 'v1.0.0'
 }
