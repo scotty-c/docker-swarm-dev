@@ -37,8 +37,3 @@ docker -H tcp://172.17.8.114:2376 ps
 ````
 
 
-Get Registrator
-````
-docker -H tcp://172.17.8.114:2376 run -d  --restart always -e constraint:node!=swarm* -v /var/run/docker.sock:/tmp/docker.sock   gliderlabs/registrator consul://172.17.8.101:8500
-````
-
