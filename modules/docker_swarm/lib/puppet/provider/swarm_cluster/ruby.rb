@@ -14,7 +14,7 @@ Puppet::Type.type(:swarm_cluster).provide(:ruby) do
   end
 
   def swarm_conf
-    cluster = resource[:cluster_type] 
+    cluster = (resource[:cluster_type]) 
     backend = (resource[:backend])
     address = (resource[:address])
     port = (resource[:port])  
@@ -31,13 +31,13 @@ Puppet::Type.type(:swarm_cluster).provide(:ruby) do
    end
 
    def exists?
-      Puppet.info("Checking if swarm is running")
+      Puppet.info("checking if swarm is running")
        pid = `ps -ef | grep swarm | grep -v grep`   
        ! pid.length.eql? 0
    end
  
    def create
-     Puppet.info("Configuring Swarm Cluster")
+     Puppet.info("configuring the swarm cluster")
      swarm_conf.each do |conf|
        p = fork {swarm *conf}
        Process.detach(p)

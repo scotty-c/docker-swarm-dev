@@ -11,6 +11,7 @@ class config(
   class {'config::swarm':}
   class {'config::compose':}
   class {'config::dns':}
+  class { 'config::run_containers':}
 }
 
 
