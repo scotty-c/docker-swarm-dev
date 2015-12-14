@@ -35,5 +35,5 @@ Docker ps
 ```` 
 docker -H tcp://172.17.8.114:2376 ps
 ````
-# This repo is no longer being managed please see [`scottyc/puppet-demo`](https://github.com/scotty-c/puppet-demo)
+## This repo is no longer being managed please see [`scottyc/puppet-demo`](https://github.com/scotty-c/puppet-demo)
 
