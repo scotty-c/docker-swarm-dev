@@ -14,31 +14,34 @@ Puppet::Type.type(:swarm_cluster).provide(:ruby) do
   end
 
   def swarm_conf
-    cluster = resource[:cluster_type] 
+    cluster = (resource[:cluster_type]) 
     backend = (resource[:backend])
     address = (resource[:address])
     port = (resource[:port])  
+    advertise = (resource[:advertise])  
     path = (resource[:path])
     case 
       when cluster.match(/create/)
-        ['create']
+        [['create']]
       when cluster.match(/join/)
-        ['join', "--advertise=#{interface}:2375", "#{backend}://#{address}:#{port}/#{path}"]
+        [['join', "--advertise=#{interface}:2375", "#{backend}://#{address}:#{port}/#{path}"]]
       when cluster.match(/manage/)      
-        ['manage', '-H', "tcp://#{interface}:2376", "#{backend}://#{address}:#{port}/#{path}"]   
+        [['manage', '-H', "tcp://#{interface}:2376", "#{backend}://#{address}:#{port}/#{path}"], ['manage', '-H', ':4000', '--replication', '--advertise', "#{advertise}:4000", "#{backend}://#{address}:#{port}/#{path}"]] 
       end
    end
 
    def exists?
-      Puppet.info("Checking if swarm is running")
+      Puppet.info("checking if swarm is running")
        pid = `ps -ef | grep swarm | grep -v grep`   
        ! pid.length.eql? 0
    end
  
    def create
-     Puppet.info("Configuring Swarm Cluster")
-     p = fork {swarm *swarm_conf}
-     Process.detach(p)
+     Puppet.info("configuring the swarm cluster")
+     swarm_conf.each do |conf|
+       p = fork {swarm *conf}
+       Process.detach(p)
+     end
    end
 
    def destroy
